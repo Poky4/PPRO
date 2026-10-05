@@ -106,8 +106,8 @@ Předpokládaný model pokrývá minimálně následující entity a vztahy:
 V souladu s metodikou zadání zde evidujeme konkrétní rozhodnutí k otevřeným bodům klienta. Každé rozhodnutí má jasné odůvodnění:
 
 * **[ROZHODNUTÍ-01] Délka termínu a členění diáře:**
-  * *Rozhodnutí:* Základní mřížka diáře bude nastavena na fixní 15minutové bloky, přičemž délku rezervace lze při zakládání nastavit jako celistvý násobek tohoto bloku (15, 30, 45, 60 min dle typu výkonu).
-  * *Důvod:* Zajišťuje přehlednost kalendáře pro paní Věru bez vzniku drobných nepřehledných mezer a zároveň poskytuje flexibilitu pro delší výkony.
+  * *Rozhodnutí:* Délka rezervace bude plně variabilní (přesný čas od-do, resp. vlastní doba trvání zadaná při rezervaci). Systém nebude omezován fixní časovou mřížkou (např. 15 min).
+  * *Důvod:* Zajišťuje maximální reálnou flexibilitu ordinace dle individuální náročnosti jednotlivých vyšetření a zákroků.
 * **[ROZHODNUTÍ-02] Oprávnění k zakládání rezervací:**
   * *Rozhodnutí:* V první etapě bude tvorba rezervací umožněna výhradně personálu recepce (interní rozhraní). Doménová vrstva a API však budou navrženy odděleně, aby bylo možné v budoucnu napojit samoobslužný veřejný portál.
   * *Důvod:* Respektuje obavu klientky ze zmatků v diáři a zaručuje bezchybný start ordinace pod dohledem recepční.
@@ -120,3 +120,6 @@ V souladu s metodikou zadání zde evidujeme konkrétní rozhodnutí k otevřen�
 * **[ROZHODNUTÍ-05] Řešení nemoci lékaře:**
   * *Rozhodnutí:* Při nahlášení výpadku lékaře systém umožní označit termíny v daném období stavem `POŽADUJE_PŘEPLÁNOVÁNÍ` a vygeneruje recepční prioritní přehledný pracovní seznam pacientů k obvolání s možností jedním klikem termín přeobjednat či zrušit.
   * *Důvod:* V medicínském prostředí nelze pacienty svévolně automaticky přesouvat k jiným lékařům bez jejich souhlasu; recepční získá nástroj, který jí ušetří čas a zajistí, že na nikoho nezapomene.
+* **[ROZHODNUTÍ-06] Technologický stack backendu:**
+  * *Rozhodnutí:* Backend bude postaven na jazyce **Python** a asynchronním frameworku **FastAPI**.
+  * *Důvod:* Vysoká produktivita, typová bezpečnost s Pydantic, automatická interaktivní Swagger/OpenAPI dokumentace a přímá podpora Dockeru.
