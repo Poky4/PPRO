@@ -29,10 +29,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    volumes:
-      - .:/app
     command: >
-      sh -c "python -m src.pre_start && uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload"
+      sh -c "python -m src.pre_start && uvicorn src.main:app --host 0.0.0.0 --port 8000"
 
 volumes:
   postgres_data:
