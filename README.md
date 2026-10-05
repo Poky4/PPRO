@@ -123,3 +123,9 @@ V souladu s metodikou zadání zde evidujeme konkrétní rozhodnutí k otevřen�
 * **[ROZHODNUTÍ-06] Technologický stack backendu:**
   * *Rozhodnutí:* Backend bude postaven na jazyce **Python** a asynchronním frameworku **FastAPI**.
   * *Důvod:* Vysoká produktivita, typová bezpečnost s Pydantic, automatická interaktivní Swagger/OpenAPI dokumentace a přímá podpora Dockeru.
+* **[ROZHODNUTÍ-07] Volba databáze a správa schématu:**
+  * *Rozhodnutí:* Jako relační databáze byl zvolen **PostgreSQL 16** provozovaný v Docker kontejneru. Pro přístup k datům bude použito ORM **SQLAlchemy 2.0** a pro verzované migrace nástroj **Alembic**.
+  * *Důvod:* Spolehlivost, silná podpora časových a datumových operací (klíčové pro rezervace a ordinační hodiny) a plné splnění podmínek předmětu PPRO.
+* **[ROZHODNUTÍ-08] Architektura autentizace a rozhraní dema:**
+  * *Rozhodnutí:* Autentizace bude realizována přes standardní OAuth2 Password Flow s **JWT Bearer tokeny** a hešováním hesel pomocí `bcrypt`. Primárním přihlašovacím identifikátorem bude `username`. Pro první demo verzi bude prezentační vrstva tvořena čistým REST API s plně interaktivním **Swagger UI (/docs)**.
+  * *Důvod:* Čisté oddělení backendu od frontendu, snadné testování a rychlá příprava pro budoucí frontendové technologie.
