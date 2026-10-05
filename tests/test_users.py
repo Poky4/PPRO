@@ -5,7 +5,7 @@ def test_create_user_by_admin(client, admin_token_headers):
     """Test vytvoření nového lékaře administrátorem."""
     user_data = {
         "username": "mudr_novak",
-        "email": "novak@ordinace.local",
+        "email": "novak@ordinace.cz",
         "full_name": "MUDr. Jan Novák",
         "role": "LEKAR",
         "password": "securepassword123",
@@ -24,7 +24,7 @@ def test_create_user_forbidden_for_receptionist(client, normal_token_headers):
     """Běžný uživatel (recepční) nesmí mít právo zakládat nové účty."""
     user_data = {
         "username": "hacker",
-        "email": "hacker@test.local",
+        "email": "hacker@test.cz",
         "full_name": "Hacker",
         "role": "ADMIN",
         "password": "password123",
@@ -37,7 +37,7 @@ def test_create_duplicate_username(client, admin_token_headers, admin_user):
     """Test pokusu o registraci již existujícího uživatelského jména."""
     user_data = {
         "username": admin_user.username,
-        "email": "different@test.local",
+        "email": "different@test.cz",
         "full_name": "Jiný Admin",
         "role": "ADMIN",
         "password": "password123",
@@ -65,7 +65,7 @@ def test_update_user(client, admin_token_headers, normal_user):
     """Test editace uživatelského účtu administrátorem."""
     update_data = {
         "full_name": "Paní Věra Upravená",
-        "email": "nova_vera@ordinace.local",
+        "email": "nova_vera@ordinace.cz",
     }
     response = client.put(
         f"/api/v1/users/{normal_user.id}",
@@ -75,7 +75,7 @@ def test_update_user(client, admin_token_headers, normal_user):
     assert response.status_code == status.HTTP_200_OK
     data = response.json()
     assert data["full_name"] == "Paní Věra Upravená"
-    assert data["email"] == "nova_vera@ordinace.local"
+    assert data["email"] == "nova_vera@ordinace.cz"
 
 
 def test_deactivate_user(client, admin_token_headers, normal_user):

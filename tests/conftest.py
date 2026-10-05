@@ -53,7 +53,7 @@ def admin_user(db_session) -> User:
     """Vytvoří testovacího administrátora."""
     user = User(
         username="testadmin",
-        email="admin@test.local",
+        email="admin@ordinace.cz",
         hashed_password=get_password_hash("adminpass123"),
         full_name="Test Administrátor",
         role=UserRole.ADMIN,
@@ -77,7 +77,7 @@ def normal_user(db_session) -> User:
     """Vytvoří testovacího běžného uživatele (recepční)."""
     user = User(
         username="testrecepce",
-        email="recepce@test.local",
+        email="recepce@ordinace.cz",
         hashed_password=get_password_hash("recepcepass123"),
         full_name="Paní Věra Testovací",
         role=UserRole.RECEPCNI,
