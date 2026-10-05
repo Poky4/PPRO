@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ordinace Na Vyhlídce – Rezervační & Personální systém</title>
+  <meta name="description" content="Moderní informační systém soukromé lékařské praxe Ordinace Na Vyhlídce.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="bg-ambient"></div>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">Ordinace Na Vyhlídce</div>
+          <div class="brand-subtitle">Lékařská praxe & personál</div>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <a href="/docs" target="_blank" class="btn btn-outline-purple btn-sm" id="nav-docs-link" title="Otevřít OpenAPI dokumentaci">
+          <span>Swagger API</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+
+        <!-- User profile badge in nav (hidden when logged out) -->
+        <div class="user-badge-nav" id="user-nav-badge" style="display: none;">
+          <div class="user-avatar-circle" id="nav-user-avatar">AD</div>
+          <div class="user-info-text">
+            <span class="user-name-text" id="nav-user-name">Administrátor</span>
+            <span class="user-role-text" id="nav-user-role">ADMIN</span>
+          </div>
+        </div>
+
+        <button class="btn btn-secondary btn-sm" id="nav-logout-btn" style="display: none;">
+          Odhlásit
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login Screen -->
+  <main id="login-view" class="login-screen">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="brand-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <h1>Přihlášení do systému</h1>
+        <p>Zadejte své přihlašovací údaje k ordinaci</p>
+      </div>
+
+      <div id="login-error" class="alert-banner alert-danger" style="display: none;"></div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-username">Přihlašovací jméno</label>
+          <input type="text" id="login-username" class="form-input" placeholder="např. admin" required autocomplete="username">
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Heslo</label>
+          <input type="password" id="login-password" class="form-input" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="btn-login-submit" style="width: 100%; margin-top: 0.5rem;">
+          Přihlásit se
+        </button>
+      </form>
+
+      <div class="quick-demo-pill">
+        <span>💡 Výchozí účet: <strong>admin</strong> / <strong>admin123</strong></span>
+        <button type="button" id="demo-fill-btn">Vyplnit demo</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Dashboard View -->
+  <main id="dashboard-view" class="container" style="display: none;">
+    <section class="dashboard-hero">
+      <div class="hero-title">
+        <h2>Správa lékařského personálu</h2>
+        <p>Přehled lékařů, personálu recepce a přístupových účtů v Ordinaci Na Vyhlídce.</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" id="open-create-modal-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Přidat člena personálu
+        </button>
+      </div>
+    </section>
+
+    <!-- Stats Row -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon-wrapper stat-icon-purple">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="stat-value" id="stat-total-users">0</div>
+          <div class="stat-label">Celkem personálu</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon-wrapper stat-icon-blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+            <path d="M8 12h8"></path>
+            <path d="M12 8v8"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="stat-value" id="stat-doctors">0</div>
+          <div class="stat-label">Lékaři v praxi</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon-wrapper stat-icon-emerald">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="stat-value" id="stat-reception">0</div>
+          <div class="stat-label">Recepce</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table Content Card -->
+    <section class="content-card">
+      <div class="content-card-header">
+        <div class="card-title-group">
+          <h3>Seznam aktivních uživatelských účtů</h3>
+          <span>Kompletní evidence lékařů, recepčních a administrátorů</span>
+        </div>
+
+        <div class="filter-toolbar">
+          <div class="search-box">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="search-input" placeholder="Hledat jméno, login...">
+          </div>
+
+          <select id="role-filter" class="form-select" style="width: auto; padding: 0.45rem 0.8rem; font-size: 0.85rem;">
+            <option value="">Všechny role</option>
+            <option value="LEKAR">Lékař</option>
+            <option value="RECEPCNI">Recepční</option>
+            <option value="ADMIN">Administrátor</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Jméno a příjmení</th>
+              <th>E-mail</th>
+              <th>Role</th>
+              <th>Stav účtu</th>
+              <th>Vytvořeno</th>
+              <th style="text-align: right;">Akce</th>
+            </tr>
+          </thead>
+          <tbody id="users-table-body">
+            <!-- Dynamically populated by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Create/Edit User Modal -->
+  <div class="modal-overlay" id="user-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title">Přidat člena personálu</h3>
+        <button class="close-btn" id="close-modal-btn">&times;</button>
+      </div>
+
+      <form id="user-form">
+        <div class="form-group">
+          <label for="form-username">Přihlašovací jméno (login)</label>
+          <input type="text" id="form-username" class="form-input" placeholder="např. mudr_novak" required minlength="3" maxlength="50">
+        </div>
+
+        <div class="form-group">
+          <label for="form-fullname">Celé jméno (včetně titulu)</label>
+          <input type="text" id="form-fullname" class="form-input" placeholder="např. MUDr. Jan Novák" required maxlength="100">
+        </div>
+
+        <div class="form-group">
+          <label for="form-email">Kontaktní e-mail</label>
+          <input type="email" id="form-email" class="form-input" placeholder="novak@ordinace.cz">
+        </div>
+
+        <div class="form-group">
+          <label for="form-role">Pracovní role v ordinaci</label>
+          <select id="form-role" class="form-select">
+            <option value="LEKAR">Lékař</option>
+            <option value="RECEPCNI">Recepční</option>
+            <option value="ADMIN">Administrátor</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="form-password">Heslo</label>
+          <input type="password" id="form-password" class="form-input" placeholder="••••••••" minlength="6">
+          <div id="form-password-help" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">
+            Zadejte minimálně 6 znaků.
+          </div>
+        </div>
+
+        <div class="form-group" id="form-active-group" style="display: none;">
+          <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+            <input type="checkbox" id="form-active" checked>
+            <span>Účet je aktivní</span>
+          </label>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancel-modal-btn">Zrušit</button>
+          <button type="submit" class="btn btn-primary" id="save-user-btn">Uložit uživatele</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
