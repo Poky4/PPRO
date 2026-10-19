@@ -169,15 +169,8 @@ def main():
         (
             "Z1",
             "19. 10. 2026",
-            "„Nelíbí se mi, že aplikace působí jako z generátoru. Nechci tam žádné logo ani křížek, uživatele nechci v žádném rámečku – jen čistě jméno a pod ním roli vedle tlačítka odhlásit. Fialovou barvu ale ponechat.“",
-            "Odstraněna veškerá grafická loga/ikonky ze záhlaví a přihlašovací obrazovky, ponechána čistá typografie ordinace s fialovým akcentem, uživatelský profil upraven na čistý bezrámečkový blok harmonicky zarovnaný k tlačítku Odhlásit se. Viz R10.",
-            "hotovo",
-        ),
-        (
-            "Z2",
-            "19. 10. 2026",
-            "„V horní liště je tlačítko 'Swagger API'. Sestřička ani lékaři nevědí, co to je, v hotovém systému pro ordinaci to nemá co dělat.“",
-            "Vývojářský odkaz na Swagger dokumentaci byl odstraněn z uživatelského rozhraní; technická dokumentace zůstává dostupná pouze vývojářům a hodnotiteli na přímé adrese /docs. Viz R10.",
+            "„Nelíbí se mi, že aplikace působí jako z generátoru. Nechci tam žádné logo ani křížek, uživatele nechci v žádném rámečku – jen čistě jméno a pod ním roli vedle tlačítka odhlásit. Fialovou barvu ale ponechat a z lišty dát pryč ten Swagger.“",
+            "Odstraněna grafická loga a symbol křížku z navigace i přihlašovací obrazovky, ponechána čistá typografie ordinace s fialovým motivem, uživatelský profil v navigaci upraven na bezrámečkový text zarovnaný k tlačítku odhlášení a vývojářský odkaz na Swagger odebrán z klientské lišty. Viz R10.",
             "hotovo",
         ),
     ]
