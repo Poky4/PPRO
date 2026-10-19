@@ -236,12 +236,9 @@ function renderUsers() {
       return `
         <tr>
           <td>
-            <div class="user-cell">
-              <div class="user-avatar-sm">${initials}</div>
-              <div>
-                <strong>${escapeHtml(user.full_name)}</strong>
-                <div style="font-size: 0.8rem; color: var(--text-muted);">${escapeHtml(user.username)}</div>
-              </div>
+            <div class="user-cell-meta">
+              <span class="user-name-primary">${escapeHtml(user.full_name)}</span>
+              <span class="user-login-sub">login: <code>${escapeHtml(user.username)}</code></span>
             </div>
           </td>
           <td>${user.email ? escapeHtml(user.email) : '<em>Neuveden</em>'}</td>
