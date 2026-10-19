@@ -1,8 +1,10 @@
+import os
 import docx
 from docx.shared import Pt, RGBColor
 
 def main():
-    template_path = "/tmp/semestral documentation/PPRO-dokumentace-sablona-v1.docx"
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    template_path = os.path.join(base_dir, "PPRO-dokumentace-sablona-v1.docx")
     doc = docx.Document(template_path)
 
     def format_cell(cell, text, bold=False, italic=False, font_size=9, color=None):
@@ -147,7 +149,7 @@ def main():
         (
             "R10",
             "Čisté minimalistické záhlaví s fialovým akcentem a odstranění Swagger odkazu z lišty",
-            "Přímé zadání klientky (Z1, Z2); odstranění grafických ikonek/log a rámečků u profilu ve prospěch čisté typografie a nerušeného zobrazení uživatele vedle tlačítka odhlášení při zachování fialové barvy.",
+            "Přímé zadání klientky (Z1); odstranění grafických ikonek/log a rámečků u profilu ve prospěch čisté typografie a nerušeného zobrazení uživatele vedle tlačítka odhlášení při zachování fialové barvy.",
             "19. 10. 2026",
         ),
     ]
@@ -170,7 +172,7 @@ def main():
             "Z1",
             "19. 10. 2026",
             "„Nelíbí se mi, že aplikace působí jako z generátoru. Nechci tam žádné logo ani křížek, uživatele nechci v žádném rámečku – jen čistě jméno a pod ním roli vedle tlačítka odhlásit. Fialovou barvu ale ponechat a z lišty dát pryč ten Swagger.“",
-            "Odstraněna grafická loga a symbol křížku z navigace i přihlašovací obrazovky, ponechána čistá typografie ordinace s fialovým motivem, uživatelský profil v navigaci upraven na bezrámečkový text zarovnaný k tlačítku odhlášení a vývojářský odkaz na Swagger odebrán z klientské lišty. Viz R10.",
+            "V kódu (index.html, style.css) odstraněna veškerá grafická loga i křížek, profil personálu upraven na čistý text bez rámečku harmonicky zarovnaný k tlačítku odhlášení, fialová barva zachována a odkaz na Swagger odstraněn z klientské navigace (přístupný na /docs). Dopad: klidné, čisté a ergonomické rozhraní bez rušivých prvků pro personál. Viz R10.",
             "hotovo",
         ),
     ]
@@ -187,8 +189,8 @@ def main():
         for c in row.cells:
             format_cell(c, "", bold=False, italic=False, font_size=9)
 
-    out_sablona = "/tmp/semestral documentation/PPRO-dokumentace-sablona-v1.docx"
-    out_spec = "/tmp/semestral documentation/PPRO-dokumentace-Rezervace-v-ordinaci.docx"
+    out_sablona = os.path.join(base_dir, "PPRO-dokumentace-sablona-v1.docx")
+    out_spec = os.path.join(base_dir, "PPRO-dokumentace-Rezervace-v-ordinaci.docx")
     doc.save(out_sablona)
     doc.save(out_spec)
     print("Dokumenty úspěšně aktualizovány a uloženy!")

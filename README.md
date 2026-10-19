@@ -131,6 +131,6 @@ V souladu s metodikou zadání zde evidujeme konkrétní rozhodnutí k otevřen�
   * *Důvod:* Čisté oddělení backendu od frontendu, snadné testování a rychlá příprava pro budoucí frontendové technologie.
 * **[ROZHODNUTÍ-09] Redesign uživatelského rozhraní dle zpětné vazby klienta:**
   * *Rozhodnutí:* Uživatelské rozhraní bylo přepracováno do čistého a minimalistického stylu: odstraněna veškerá grafická loga/ikonky (včetně křížků) ve prospěch čisté typografie ordinace, zachován fialový akcent pro ovládací prvky, profil přihlášeného personálu byl zbaven jakýchkoliv rámečků či bublin (čisté jméno a pod ním role harmonicky zarovnané k tlačítku odhlášení) a odstraněn technický odkaz na Swagger API z klientské navigace.
-  * *Důvod:* Přímý požadavek klientky MUDr. Hrubé (Z1, Z2) – rozhraní musí působit seriózně, nerušeně a profesionálně, bez generických 'AI' ikonek a matoucích vývojářských odkazů pro personál.
+  * *Důvod:* Přímý požadavek klientky MUDr. Hrubé (Z1) – rozhraní musí působit seriózně, nerušeně a profesionálně, bez generických 'AI' ikonek a matoucích vývojářských odkazů pro personál.
 
 
