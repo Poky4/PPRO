@@ -144,6 +144,12 @@ def main():
             "Splnění povinného minima č. 4 – nulové ruční kroky při spouštění novým uživatelem, automatická inicializace spojení, migrací a seed dat při startu.",
             "16. 10. 2026",
         ),
+        (
+            "R10",
+            "Redesign UI na střídmý lékařský styl a odebrání Swagger odkazu z klientské lišty",
+            "Reakce na požadavek klientky (Z1, Z2); odstranění generického AI/SaaS stylu (fialové záře, kulatý avatar) a posílení důvěryhodnosti pro zdravotnický personál.",
+            "19. 10. 2026",
+        ),
     ]
 
     for idx, dec in enumerate(decisions, start=1):
@@ -159,9 +165,34 @@ def main():
 
     # --- Table 2: Změny požadované klientem ---
     t2 = doc.tables[2]
-    # Smazat vzorový řádek Z1 ze šablony
-    for c in t2.rows[1].cells:
-        format_cell(c, "", bold=False, italic=False, font_size=9)
+    client_changes = [
+        (
+            "Z1",
+            "19. 10. 2026",
+            "„Nelíbí se mi, že aplikace působí jako vygenerovaná umělou inteligencí. Chci pryč tu generickou ikonku, upravit název na naši ordinaci a zbavit se toho kulatého uživatelského profilu.“",
+            "Přepracován vizuální styl klientského rozhraní – fialové záře nahrazeny střídmou lékařskou modří a šedými tóny, generická ikonka nahrazena symbolem lékařského kříže, doplněna identifikace praxe MUDr. Jany Hrubé a kulatý avatar nahrazen hranatým stavovým štítkem personálu. Viz R10.",
+            "hotovo",
+        ),
+        (
+            "Z2",
+            "19. 10. 2026",
+            "„V horní liště je tlačítko 'Swagger API'. Sestřička ani lékaři nevědí, co to je, v hotovém systému pro ordinaci to nemá co dělat.“",
+            "Vývojářský odkaz na Swagger dokumentaci byl odstraněn z uživatelského rozhraní; technická dokumentace zůstává dostupná pouze vývojářům a hodnotiteli na přímé adrese /docs. Viz R10.",
+            "hotovo",
+        ),
+    ]
+
+    for idx, change in enumerate(client_changes, start=1):
+        row = t2.rows[idx]
+        format_cell(row.cells[0], change[0], bold=False, italic=False, font_size=9)
+        format_cell(row.cells[1], change[1], bold=False, italic=False, font_size=9)
+        format_cell(row.cells[2], change[2], bold=False, italic=False, font_size=9)
+        format_cell(row.cells[3], change[3], bold=False, italic=False, font_size=9)
+        format_cell(row.cells[4], change[4], bold=False, italic=False, font_size=9)
+
+    for row in t2.rows[len(client_changes) + 1:]:
+        for c in row.cells:
+            format_cell(c, "", bold=False, italic=False, font_size=9)
 
     out_sablona = "/tmp/semestral documentation/PPRO-dokumentace-sablona-v1.docx"
     out_spec = "/tmp/semestral documentation/PPRO-dokumentace-Rezervace-v-ordinaci.docx"

@@ -17,30 +17,21 @@
   <header class="navbar">
     <div class="nav-container">
       <a href="/" class="brand">
-        <div class="brand-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 10.5h-5.5V5c0-.55-.45-1-1-1h-1c-.55 0-1 .45-1 1v5.5H5c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h5.5V19c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-5.5H19c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1z"/>
           </svg>
         </div>
         <div>
           <div class="brand-title">Ordinace Na Vyhlídce</div>
-          <div class="brand-subtitle">Lékařská praxe & personál</div>
+          <div class="brand-subtitle">Lékařská praxe – MUDr. Jana Hrubá</div>
         </div>
       </a>
 
       <div class="nav-actions">
-        <a href="/docs" target="_blank" class="btn btn-outline-purple btn-sm" id="nav-docs-link" title="Otevřít OpenAPI dokumentaci">
-          <span>Swagger API</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-            <polyline points="15 3 21 3 21 9"></polyline>
-            <line x1="10" y1="14" x2="21" y2="3"></line>
-          </svg>
-        </a>
-
-        <!-- User profile badge in nav (hidden when logged out) -->
+        <!-- User profile badge in nav (hidden when logged out) - sober rectangular medical status -->
         <div class="user-badge-nav" id="user-nav-badge" style="display: none;">
-          <div class="user-avatar-circle" id="nav-user-avatar">AD</div>
+          <div class="user-status-box" id="nav-user-avatar">AD</div>
           <div class="user-info-text">
             <span class="user-name-text" id="nav-user-name">Administrátor</span>
             <span class="user-role-text" id="nav-user-role">ADMIN</span>
@@ -48,7 +39,7 @@
         </div>
 
         <button class="btn btn-secondary btn-sm" id="nav-logout-btn" style="display: none;">
-          Odhlásit
+          Odhlásit se
         </button>
       </div>
     </div>
@@ -58,13 +49,13 @@
   <main id="login-view" class="login-screen">
     <div class="login-card">
       <div class="login-header">
-        <div class="brand-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        <div class="brand-icon login-emblem">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 10.5h-5.5V5c0-.55-.45-1-1-1h-1c-.55 0-1 .45-1 1v5.5H5c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h5.5V19c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-5.5H19c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1z"/>
           </svg>
         </div>
-        <h1>Přihlášení do systému</h1>
-        <p>Zadejte své přihlašovací údaje k ordinaci</p>
+        <h1>Informační systém ordinace</h1>
+        <p>Ordinace Na Vyhlídce – MUDr. Jana Hrubá</p>
       </div>
 
       <div id="login-error" class="alert-banner alert-danger" style="display: none;"></div>
@@ -113,7 +104,7 @@
     <!-- Stats Row -->
     <section class="stats-grid">
       <div class="stat-card">
-        <div class="stat-icon-wrapper stat-icon-purple">
+        <div class="stat-icon-wrapper stat-icon-slate">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
             <circle cx="9" cy="7" r="4"></circle>
