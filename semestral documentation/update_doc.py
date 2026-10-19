@@ -146,8 +146,8 @@ def main():
         ),
         (
             "R10",
-            "Redesign UI na střídmý lékařský styl a odebrání Swagger odkazu z klientské lišty",
-            "Reakce na požadavek klientky (Z1, Z2); odstranění generického AI/SaaS stylu (fialové záře, kulatý avatar) a posílení důvěryhodnosti pro zdravotnický personál.",
+            "Čisté minimalistické záhlaví s fialovým akcentem a odstranění Swagger odkazu z lišty",
+            "Přímé zadání klientky (Z1, Z2); odstranění grafických ikonek/log a rámečků u profilu ve prospěch čisté typografie a nerušeného zobrazení uživatele vedle tlačítka odhlášení při zachování fialové barvy.",
             "19. 10. 2026",
         ),
     ]
@@ -169,8 +169,8 @@ def main():
         (
             "Z1",
             "19. 10. 2026",
-            "„Nelíbí se mi, že aplikace působí jako vygenerovaná umělou inteligencí. Chci pryč tu generickou ikonku, upravit název na naši ordinaci a zbavit se toho kulatého uživatelského profilu.“",
-            "Přepracován vizuální styl klientského rozhraní – fialové záře nahrazeny střídmou lékařskou modří a šedými tóny, generická ikonka nahrazena symbolem lékařského kříže, doplněna identifikace praxe MUDr. Jany Hrubé a kulatý avatar nahrazen hranatým stavovým štítkem personálu. Viz R10.",
+            "„Nelíbí se mi, že aplikace působí jako z generátoru. Nechci tam žádné logo ani křížek, uživatele nechci v žádném rámečku – jen čistě jméno a pod ním roli vedle tlačítka odhlásit. Fialovou barvu ale ponechat.“",
+            "Odstraněna veškerá grafická loga/ikonky ze záhlaví a přihlašovací obrazovky, ponechána čistá typografie ordinace s fialovým akcentem, uživatelský profil upraven na čistý bezrámečkový blok harmonicky zarovnaný k tlačítku Odhlásit se. Viz R10.",
             "hotovo",
         ),
         (

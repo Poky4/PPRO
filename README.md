@@ -130,6 +130,7 @@ V souladu s metodikou zadání zde evidujeme konkrétní rozhodnutí k otevřen�
   * *Rozhodnutí:* Autentizace bude realizována přes standardní OAuth2 Password Flow s **JWT Bearer tokeny** a hešováním hesel pomocí `bcrypt`. Primárním přihlašovacím identifikátorem bude `username`. Pro první demo verzi bude prezentační vrstva tvořena čistým REST API s plně interaktivním **Swagger UI (/docs)**.
   * *Důvod:* Čisté oddělení backendu od frontendu, snadné testování a rychlá příprava pro budoucí frontendové technologie.
 * **[ROZHODNUTÍ-09] Redesign uživatelského rozhraní dle zpětné vazby klienta:**
-  * *Rozhodnutí:* Uživatelské rozhraní bylo přepracováno do střídmého klinického stylu (odstraněna fialová 'AI' paleta a ambientní záře ve prospěch lékařské modři a neutrálních tónů, nahrazen generický SaaS kulatý avatar hranatým stavovým štítkem personálu s monogramem a odstraněn odkaz na Swagger API z klientské navigace).
-  * *Důvod:* Přímý požadavek klientky MUDr. Hrubé (Z1, Z2) – rozhraní musí působit seriózně jako zdravotnický software a nesmí obsahovat matoucí vývojářské odkazy pro personál.
+  * *Rozhodnutí:* Uživatelské rozhraní bylo přepracováno do čistého a minimalistického stylu: odstraněna veškerá grafická loga/ikonky (včetně křížků) ve prospěch čisté typografie ordinace, zachován fialový akcent pro ovládací prvky, profil přihlášeného personálu byl zbaven jakýchkoliv rámečků či bublin (čisté jméno a pod ním role harmonicky zarovnané k tlačítku odhlášení) a odstraněn technický odkaz na Swagger API z klientské navigace.
+  * *Důvod:* Přímý požadavek klientky MUDr. Hrubé (Z1, Z2) – rozhraní musí působit seriózně, nerušeně a profesionálně, bez generických 'AI' ikonek a matoucích vývojářských odkazů pro personál.
+
 

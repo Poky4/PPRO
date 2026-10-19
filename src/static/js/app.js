@@ -434,7 +434,9 @@ function showDashboardView() {
     .join('')
     .toUpperCase();
 
-  navAvatar.innerText = initials;
+  if (navAvatar) {
+    navAvatar.innerText = initials;
+  }
   navName.innerText = state.currentUser.full_name;
   navRole.innerText = state.currentUser.role;
 
